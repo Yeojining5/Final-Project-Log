@@ -3,10 +3,11 @@ import { Button, Form, Modal, Container, Row, Col } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { noticelist } from './../service/dbLogic';
 import NoticeRowAdmin from '../components/notice/NoticeRowAdmin';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from "axios"
 import Swal from 'sweetalert2'
 import { BROWN_BTN } from '../styles/NoticeStyle';
+import Pagination from './../components/Common/Pagination';
 
 const NoticeAdmin = () => {
 
@@ -18,13 +19,21 @@ const NoticeAdmin = () => {
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
+
+  /**************** 페이지네이션 선언 ********************/
+  const [limit, setLimit] = useState(10);
+  const [page, setPage] = useState(1);
+  const offset = (page - 1) * limit;
+
+
+  /* **************************************************** */
   /* noticelist 데이터 가져오기 */
   useEffect(() => {
     const oracleDB = async () => {
         //const result = await jsonDeptList({ DEPTNO: 30 }) -> 스프링콘솔에 com.example.demo.dao.DeptDao  : pMap : {DEPTNO=30}
         const result = await noticelist() // pMap : {}
         console.log(result)
-        console.log(result.data[3])
+        //console.log(result.data[3])
         setNoticeList(result.data)
     }
     oracleDB()
@@ -42,6 +51,7 @@ const NoticeAdmin = () => {
     if(e.currentTarget == null) return;
       console.log(e.target.files[0]);
   }
+
 
   /* ************************************************** */
   ////////////// 글등록 //////////////////
@@ -70,27 +80,35 @@ const NoticeAdmin = () => {
       console.log(response.data);
       handleClose()
       window.location.replace("/admin/notice")
-            const Toast = Swal.mixin({
-              toast: true,
-              position: 'top-end',
-              showConfirmButton: false,
-              timer: 3000,
-              timerProgressBar: true,
-              didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-              }
-            })
-            Toast.fire({
-              icon: 'success',
-              title: '등록되었습니다!'
-            })
+      alert("등록되었습니다!")
     })
     .catch((error) => {
         console.log(error);
     })
   }
+
+
   /* ************************************************** */
+  /////////// 조건검색
+  const dataSearch = (e) => {
+    e.preventDefault()
+    const gubun = document.querySelector("#gubun").value;
+    const keyword = document.querySelector("#keyword").value;
+    console.log(gubun+","+keyword);
+    const asyncDB = async() => {
+        const res = await noticelist({ gubun : gubun, keyword: keyword  })
+        if(res.data){
+            console.log(res.data);
+            setNoticeList(res.data);
+        }
+    }
+    asyncDB()
+  };
+  /* ************************************************** */
+
+  const refresh = () => {
+    window.location.reload();
+  }
 
 
 
@@ -101,18 +119,49 @@ const NoticeAdmin = () => {
         <h4>공지사항 관리</h4>
         <hr />
 
-        <div className="d-flex justify-content-end">
-          <Button variant="outline-secondary" id="btn_search" style={{ marginRight: "20px", width:"100px"}}
-            onClick={handleShow}>
-              <i className="fa-regular fa-pen-to-square"></i>
-              &nbsp;글쓰기
-          </Button>
-          <Button variant="outline-secondary" id="btn_search" style={{ marginRight: "20px", width:"180px"}}
-            onClick={()=>{ navigate('/notice') }}>
-              <i className="fa-solid fa-arrow-right"></i>
-              &nbsp;회원페이지 이동
-          </Button>
-        </div>
+        <Row>
+          <Col xs={12} md={6}>
+            {/* ####################[[조건 검색]]############################## */}
+            <div className="d-flex justify-content-baseline" style={{ width:"90%", height:"45px"}}>
+              <select id="gubun" className="form-select" aria-label="분류" style={{ width: "40%", marginRight: "10px" }}>
+                <option defaultValue>분류선택</option>
+                <option value="notice_no">번호</option>
+                <option value="notice_title">제목</option>
+                <option value="notice_category">카테고리</option>
+              </select>
+              <input type="text" id="keyword" className="form-control" placeholder="검색어를 입력하세요" />
+              <Button variant="outline-secondary" id="btn_search" style={{ marginLeft: "10px", width:"100px"}}
+                      onClick={dataSearch}>
+                검색
+              </Button>
+            </div>
+            {/* ###################[[조건검색 끝]]####################### */}
+          </Col>
+          
+          <Col xs={6} md={6}>
+            <div className="d-flex justify-content-end">
+              
+              <Button variant="outline-secondary" id="btn_search" style={{ marginRight: "20px", width:"120px"}}
+                      onClick={refresh}>
+                <i className="fa-solid fa-arrows-rotate"></i>
+                &nbsp;새로고침
+              </Button>
+
+              <Button variant="outline-secondary" id="btn_search" style={{ marginRight: "20px", width:"180px"}}
+                onClick={()=>{ navigate('/notice') }}>
+                  <i className="fa-solid fa-arrow-right"></i>
+                  &nbsp;회원페이지 이동
+              </Button>
+
+              <Button variant="outline-secondary" id="btn_search" style={{ marginRight: "20px", width:"100px"}}
+                onClick={handleShow}>
+                  <i className="fa-regular fa-pen-to-square"></i>
+                  &nbsp;글쓰기
+              </Button>
+
+            </div>
+          </Col>
+        </Row>
 
           <table>
             <colgroup>
@@ -139,29 +188,23 @@ const NoticeAdmin = () => {
 
             <tbody>
               {
-                noticeList.map((notice, i) => (
+                noticeList.slice(offset, offset + limit).map((notice, i) => (
                   <NoticeRowAdmin key={i} notice={notice} />
                 ))
               }
             </tbody>
           </table>
 
+
+          <Pagination
+          total={noticeList.length}
+          limit={limit}
+          page={page}
+          setPage={setPage}
+        />
+
           
 
-          {/* ####################[[조건 검색]]############################## */}
-          <Form className="d-flex mx-auto" style={{ width:"50%", height:"45px"}}>
-            <select id="gubun" className="form-select" aria-label="분류선택" style={{ width: "40%", marginRight: "10px" }}>
-              <option defaultValue>분류선택</option>
-              <option value="deptno">번호</option>
-              <option value="dname">제목</option>
-              <option value="loc">작성자</option>
-            </select>
-            <input type="text" id="keyword" className="form-control" placeholder="검색어를 입력하세요" />
-            <Button variant="outline-secondary" id="btn_search" style={{ marginLeft: "10px", width:"100px"}}>
-              검색
-            </Button>
-          </Form>
-          {/* ###################[[조건검색 끝]]####################### */}
 
 
 {/* ========[[[등록 모달 시작]]]======= */}

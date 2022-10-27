@@ -75,28 +75,14 @@ const NoticeUpAdmin = () => {
     .then((response) => {
       console.log(response);
       console.log(response.data);
-      if(response.data===1) {
-        window.location.replace("/admin/notice")
-        const Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 3000,
-        })
-        
-        Toast.fire({
-          icon: 'success',
-          title: 'Signed in successfully'
-        })
-      }
+      window.location.replace("/admin/notice")
+      alert("수정되었습니다!")
     })
     .catch((error) => {
         console.log(error);
     })
   }
   /* ************************************************** */
-
-
 
 
 
@@ -134,7 +120,7 @@ const NoticeUpAdmin = () => {
                 </tr>
                 <tr>
                   <th>작성자</th>
-                  <td colSpan={4}>{noticeVO.NOTICE_WRITER}</td>
+                  <td colSpan={4}>{noticeVO.ADMIN_ID}</td>
                 </tr>
                 <tr>
                   <th>카테고리</th>

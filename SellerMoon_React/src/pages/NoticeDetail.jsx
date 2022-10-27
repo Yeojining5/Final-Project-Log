@@ -25,9 +25,7 @@ const NoticeDetail = () => {
     notice_hit: 0,
     notice_category: "", 
     notice_regdate: "",
-    filename: "", 
-    fileurl: "",
-		notice_writer: "",
+    notcie_file: "", 
   })
 
   useEffect(() => {
@@ -73,7 +71,7 @@ const NoticeDetail = () => {
                   </tr>
                   <tr>
                     <th>작성자</th>
-                    <td colSpan={4}>{noticeVO.NOTICE_WRITER}</td>
+                    <td colSpan={4}>{noticeVO.ADMIN_ID}</td>
                   </tr>
                   <tr>
                     <th>첨부파일</th>

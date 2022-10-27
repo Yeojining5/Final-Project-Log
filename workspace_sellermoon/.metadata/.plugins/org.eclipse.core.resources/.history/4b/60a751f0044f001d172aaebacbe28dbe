@@ -1,0 +1,27 @@
+package kh.sellermoon.admin.logic;
+
+import java.util.List;
+import java.util.Map;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kh.sellermoon.admin.controller.NoticeController;
+import kh.sellermoon.admin.dao.NoticeDao;
+
+@Service
+public class NoticeLogic {
+	Logger logger = LogManager.getLogger(NoticeLogic.class);
+	
+	@Autowired
+	private NoticeDao noticeDao = null;
+	
+	public List<Map<String, Object>> noticeList(Map<String, Object> pMap) {
+		List<Map<String, Object>> noticeList = null;
+		noticeList = noticeDao.noticeList(pMap);
+		return noticeList;
+	}
+
+}

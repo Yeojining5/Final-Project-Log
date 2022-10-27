@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="lombok.Data"/>
+    <fullyQualifiedTypeName name="org.slf4j.LoggerFactory"/>
+    <fullyQualifiedTypeName name="org.slf4j.Logger"/>
+    <fullyQualifiedTypeName name="org.mybatis.spring.SqlSessionTemplate"/>
+    <fullyQualifiedTypeName name="org.apache.logging.log4j.Logger"/>
+    <fullyQualifiedTypeName name="org.apache.logging.log4j.LogManager"/>
+    <fullyQualifiedTypeName name="kh.sellermoon.admin.logic.NoticeLogic"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
+    <fullyQualifiedTypeName name="com.sun.tools.javac.util.List"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="com.google.gson.Gson"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="kh.sellermoon.admin.dao.NoticeDao"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+</qualifiedTypeNameHistroy>

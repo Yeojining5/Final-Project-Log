@@ -7,6 +7,7 @@ import axios from "axios"
 import NoticeDetail from './pages/NoticeDetail';
 import NoticeAdmin from './pages/NoticeAdmin';
 import NoticeUpAdmin from './pages/NoticeUpAdmin';
+import Faq from './pages/Faq';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/admin/notice" element={<NoticeAdmin />} exact={true} />
         <Route path="/admin/notice/update/:notice_no" element={<NoticeUpAdmin />} exact={true} />
       
+        <Route path="/faq" element={<Faq />} exact={true} />
       </Routes>
     </>
   );
