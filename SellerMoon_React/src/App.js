@@ -1,13 +1,17 @@
 import { Route, Routes } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Main from './pages/Main';
 import "./App.css"
-import Notice from './pages/Notice';
 import axios from "axios"
-import NoticeDetail from './pages/NoticeDetail';
-import NoticeAdmin from './pages/NoticeAdmin';
-import NoticeUpAdmin from './pages/NoticeUpAdmin';
-import Faq from './pages/Faq';
+import Main from './components/main_member/Main';
+import Notice from './components/notice/Notice';
+import NoticeDetail from './components/notice/NoticeDetail';
+import NoticeAdmin from './components/notice/NoticeAdmin';
+import NoticeUpAdmin from './components/notice/NoticeUpAdmin';
+import Faq from './components/faq/Faq';
+import FaqDetail from './components/faq/FaqDetail';
+import FaqAdmin from "./components/faq/FaqAdmin";
+import FaqUpAdmin from './components/faq/FaqUpAdmin';
+
 
 function App() {
 
@@ -22,11 +26,14 @@ function App() {
         
         <Route path="/notice" element={<Notice />} exact={true} />
         <Route path="/notice/detail/:notice_no" element={<NoticeDetail />} exact={true} />
-
         <Route path="/admin/notice" element={<NoticeAdmin />} exact={true} />
         <Route path="/admin/notice/update/:notice_no" element={<NoticeUpAdmin />} exact={true} />
       
         <Route path="/faq" element={<Faq />} exact={true} />
+        <Route path="/faq/detail/:faq_no" element={<FaqDetail />} exact={true} />
+        <Route path="/admin/faq" element={<FaqAdmin />} exact={true} />
+        <Route path="/admin/faq/update/:faq_no" element={<FaqUpAdmin />} exact={true} />
+
       </Routes>
     </>
   );

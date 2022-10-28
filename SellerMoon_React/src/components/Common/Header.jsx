@@ -88,7 +88,7 @@ const Header = () => {
 
               <NavDropdown title="Customer" id="basic-nav-dropdown" className="nav-menu">
                 <NavDropdown.Item onClick={()=>{ navigate('/notice')}}>공지사항</NavDropdown.Item>
-                <NavDropdown.Item onClick={()=>{ navigate('/')}}>FAQ</NavDropdown.Item>
+                <NavDropdown.Item onClick={()=>{ navigate('/faq')}}>FAQ</NavDropdown.Item>
               </NavDropdown>
 
             </Nav>
