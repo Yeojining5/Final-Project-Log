@@ -51,9 +51,9 @@ const Faq = () => {
           <div className="col-9">
             <div className="list-wrapper">
 
-              <h4 style={{ marginBottom : "2rem" }}>
+              <p style={{ marginBottom : "2rem", fontSize:"1.4rem", fontWeight:"600" }}>
                 자주묻는질문(FAQ)
-              </h4>
+              </p>
               
 
 {/* ********************* Tab Content start ************************ */}

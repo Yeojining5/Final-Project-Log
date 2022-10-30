@@ -335,7 +335,7 @@ const FaqAdmin = () => {
                 <Form.Group className="mb-4 mt-3">
                   <Form.Label className="m_label">글제목</Form.Label>
                   <Form.Control
-                      type='text' name='faq_title' onChange={onChange} />
+                      type='text' name='faq_title' size="lg" onChange={onChange} />
                 </Form.Group>
                 
                 <Form.Group className="mb-4">

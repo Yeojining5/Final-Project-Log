@@ -5,6 +5,7 @@ import { CONTAINER_TAB } from './../../styles/MainStyle';
 import TabContent from './TabContent';
 import SliderBanner from './SliderBanner';
 import Footer from './../Common/Footer';
+import SocialBanner from './SocialBanner';
 
 
 const Main = () => {
@@ -36,6 +37,8 @@ const Main = () => {
         <CONTAINER_TAB>
           <TabContent />
         </CONTAINER_TAB>
+
+        <SocialBanner />
 
         <Footer />
         

@@ -82,7 +82,7 @@ const Notice = () => {
           <div className="col-9">
             <div className="list-wrapper">
 
-              <h4>공지사항</h4>
+              <p style={{fontSize:"1.4rem", fontWeight:"600"}}>공지사항</p>
                 <table style={{ width: "1020px" }}>
                   <colgroup>
                     <col style={{ width: "10%" }} />

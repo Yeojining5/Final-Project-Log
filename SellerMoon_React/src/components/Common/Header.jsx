@@ -50,7 +50,7 @@ const Header = () => {
                 </span>
               </button>
               <button className="btn position-relative"
-                      onClick={()=>{ navigate('/login') }}> {/* 로그인,회원가입 이동 */}
+                      onClick={()=>{ navigate('/mypage/point') }}> {/* Mypage,로그인,회원가입 이동 */}
                 <i className="fa-solid fa-user" id="nav-icon"></i> 
               </button>
 

@@ -267,13 +267,13 @@ const sortCount = () => {
                 <Form.Group className="mb-4 mt-3">
                   <Form.Label className="m_label">글제목</Form.Label>
                   <Form.Control
-                      type='text' name='notice_title' onChange={onChange}  />
+                      type='text' name='notice_title' size="lg" onChange={onChange}  />
                 </Form.Group>
                 
                 <Form.Group className="mb-4">
                   <Form.Label className="m_label">카테고리</Form.Label>
                   <Form.Control
-                      type='text' name='notice_category' onChange={onChange}  />
+                      type='text' name='notice_category' size="lg" onChange={onChange}  />
                   <Form.Text className="text-muted">
                     &nbsp;안내사항 / 이벤트 / 긴급안내 / 기쁜소식 / 출시소식
                   </Form.Text>
@@ -281,7 +281,7 @@ const sortCount = () => {
                 
                 <Form.Group className="mb-3">
                   <Form.Control
-                    className="form-control"
+                    className="form-control" size="lg"
                     type="file"
                     id="notice_file"
                     name="notice_file"
