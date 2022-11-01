@@ -213,7 +213,7 @@ th {
   background: #f7f7f5;
   height: 50px;
   border-bottom: 1px solid #e6e6e6;
-  padding-left: 20px;
+  padding: 10px 10px;
 }
 
 td {
