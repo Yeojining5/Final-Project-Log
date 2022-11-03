@@ -61,5 +61,6 @@ export const BROWN_BTN = styled.button `
   background-color: #5e514d;
   border: none;
   margin : 0px 15px;
+  font-weight : 600;
 `
 

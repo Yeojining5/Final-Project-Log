@@ -15,10 +15,12 @@ import FaqUpAdmin from './components/manager/faq/FaqUpAdmin';
 import Point from './components/member/point/Point';
 import { pointlist } from './service/dbLogic';
 import PointAdmin from './components/manager/point/PointAdmin';
-import PointUpAdmin from "./components/manager/point/PointUpAdmin";
+import Friends from './components/member/point/Friends';
+import ChatLogin from './components/member/chat/ChatLogin';
+import ChatMessage from './components/member/chat/ChatMessage';
 
 
-function App() {
+function App({ authLogic }) {
 
 const [pointList, setPointList] = useState([])
 
@@ -60,6 +62,11 @@ const [pointList, setPointList] = useState([])
         <Route path="/admin/point" element={<PointAdmin />} pointList={pointList} exact={true} />
         
         <Route path="/mypage/point" element={<Point pointList={pointList} />} exact={true} />
+
+        <Route path="/mypage/friends" element={<Friends pointList={pointList} />} exact={true} />
+        
+        <Route path="/chat/login" element={<ChatLogin authLogic={authLogic} />} exact={true} />
+        <Route path="/chat/chatroom/:userId" element={<ChatMessage authLogic={authLogic} />} exact={true} />
 
 
       </Routes>

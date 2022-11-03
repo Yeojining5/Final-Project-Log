@@ -23,7 +23,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.google.gson.Gson;
 
 import kh.sellermoon.admin.logic.NoticeLogic;
-import kh.util.HashMapBinder;
+import util.HashMapBinder;
 
 @RestController
 @RequestMapping("/notice/*")

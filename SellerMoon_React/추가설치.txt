@@ -7,3 +7,5 @@ npm install slick-carousel --save
 npm i react-daum-postcode
 
 npm install sweetalert2
+
+npm install firebase

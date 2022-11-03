@@ -44,7 +44,7 @@ public class FaqLogic {
 		List<Map<String,Object>> faqList = null;
 		faqList = faqDao.faqList(pMap);
 		if(faqList!=null && faqList.size()==1) {
-			faqDao.hitCount(pMap);
+			faqDao.viewCount(pMap);
 		}
 		return faqList; 
 	}

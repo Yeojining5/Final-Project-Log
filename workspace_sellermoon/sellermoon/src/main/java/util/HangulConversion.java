@@ -1,4 +1,4 @@
-package kh.util;
+package util;
 
 public class HangulConversion {
 	

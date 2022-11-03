@@ -28,7 +28,7 @@ const NavbarMypage = ({ pointList }) => {
             적립금 
             <i className="fa-solid fa-angle-right"></i>
           </MYSPAN>
-          <MYP> {pointList[0].POINT_SUM}  P</MYP>
+          <MYP> {pointList[0].POINT_SUM.toLocaleString()}  P</MYP>
         </MYLI2>
       </MYUL>
     </>

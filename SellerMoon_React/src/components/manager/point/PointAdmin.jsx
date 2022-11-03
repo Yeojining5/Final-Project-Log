@@ -98,6 +98,66 @@ const PointAdmin = () => {
 
 
 /* ************************************************** */
+/* 오름차 내림차 정렬 관련 */
+const [sortBtn, setSortBtn] = useState(0); // 0일때와 1일때 버튼명 변경
+const [memNo, setMemNo] = useState("회원번호 ▼") // 버튼명 저장
+const [point, setPoint] = useState("적용금액 ▼") // 버튼명 저장
+const [type, setType] = useState("적립/사용 내용 ▼") // 버튼명 저장
+
+const sortMemNo = () => {
+    let sorting1 = [...pointList]
+    if(sortBtn === 0) {
+      setMemNo("회원번호 ▲");
+        setPointList(
+          sorting1.sort((a, b) => 
+          a.MEMBER_NO < b.MEMBER_NO ? -1 : 1)
+        )
+      setSortBtn(1); /* 버튼 상태를 1로 - 토글 */
+    } else if (sortBtn === 1) {
+      setMemNo("회원번호 ▼");
+        setPointList(
+          sorting1.sort((a,b) => a.MEMBER_NO > b.MEMBER_NO ? -1 : 1)
+          )
+        setSortBtn(0); /* 버튼 상태를 0으로 - 토글 */
+    } 
+  }
+
+const sortPoint = () => {
+  let sorting2 = [...pointList]
+  if(sortBtn === 0) {
+    setPoint("적용금액 ▲");
+    setPointList(
+        sorting2.sort((a, b) => 
+        a.POINT_USED_SAVED < b.POINT_USED_SAVED ? -1 : 1)
+      )
+    setSortBtn(1); /* 버튼 상태를 1로 - 토글 */
+  } else if (sortBtn === 1) {
+    setPoint("적용금액 ▼");
+      setPointList(
+        sorting2.sort((a,b) => a.POINT_USED_SAVED > b.POINT_USED_SAVED ? -1 : 1)
+        )
+    setSortBtn(0); /* 버튼 상태를 0으로 - 토글 */
+  } 
+}
+
+const sortType = () => {
+  let sorting3 = [...pointList]
+  if(sortBtn === 0) {
+    setType("적립/사용 내용 ▲");
+    setPointList(
+        sorting3.sort((a, b) => 
+        a.POINT_TYPE< b.POINT_TYPE ? -1 : 1)
+      )
+    setSortBtn(1); /* 버튼 상태를 1로 - 토글 */
+  } else if (sortBtn === 1) {
+    setType("적립/사용 내용 ▼");
+      setPointList(
+        sorting3.sort((a,b) => a.POINT_TYPE > b.POINT_TYPE ? -1 : 1)
+        )
+    setSortBtn(0); /* 버튼 상태를 0으로 - 토글 */
+  } 
+}
+
 
 
 
@@ -142,25 +202,30 @@ const PointAdmin = () => {
               </Col>
             </Row>
 
+            <p style={{ margin: "10px 10px", fontSize:"0.9rem"}}>
+              [적립/사용 검색 분류코드] 0 : 회원가입적립 / 1 : 추천인기입 / 2 : 주문적립 / 
+              3 : 상품후기등록 / 4 : 베스트후기선정 / 5 : 적립금사용
+            </p>
+
           <table>
             <colgroup>
-              <col style={{ width: "11%" }} />
               <col style={{ width: "10%" }} />
-              <col style={{ width: "10%" }} />
+              <col style={{ width: "13%" }} />
+              <col style={{ width: "12%" }} />
               <col style={{ width: "23%" }} />
               <col style={{ width: "13%" }} />
-              <col style={{ width: "15%" }} />
-              <col style={{ width: "18%" }} />
+              <col style={{ width: "13%" }} />
+              <col style={{ width: "16%" }} />
             </colgroup>
 
             <thead>
               <tr>
                 <th>적립번호</th>
-                <th style={{cursor:"pointer"}}>회원번호</th>
-                <th>적용금액</th>
-                <th style={{cursor:"pointer"}}>적립/사용 내용</th>
-                <th style={{cursor:"pointer"}}>잔여적립금</th>
-                <th style={{cursor:"pointer"}}>적용일자</th>
+                <th onClick={sortMemNo} style={{cursor:"pointer"}}>{memNo}</th>
+                <th onClick={sortPoint} style={{cursor:"pointer"}}>{point}</th>
+                <th onClick={sortType} style={{cursor:"pointer"}}>{type}</th>
+                <th>잔여적립금</th>
+                <th>적용일자</th>
                 <th>수정 / 삭제</th>
               </tr>
             </thead>
@@ -210,15 +275,15 @@ const PointAdmin = () => {
                         <option value="4">베스트후기선정</option>
                         <option value="5">적립금사용</option>
                       </Form.Select>
-                      <Form.Text className="text-muted">
-                        &nbsp;적립금사용 ex) -2000
-                      </Form.Text>
                   </Form.Group>
                   
                   <Form.Group className="mb-3">
                     <Form.Label className="point_used_saved">적용금액</Form.Label>
                     <Form.Control
                           type='text' id='point_used_saved' name='point_used_saved' size="lg" onChange={onChange} />
+                      <Form.Text className="text-muted">
+                        &nbsp;적립금사용 ex) -2000
+                      </Form.Text>
                   </Form.Group>
                 </Container>
         

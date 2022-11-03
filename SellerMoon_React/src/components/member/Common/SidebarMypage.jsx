@@ -41,12 +41,12 @@ const SidebarMypage = () => {
               적립금
             </LI_SIDE>
 
-            <LI_SIDE onClick={()=>{ navigate('/')}}>
+            <LI_SIDE onClick={()=>{ navigate('/mypage/friends')}}>
               친구초대
             </LI_SIDE>
 
-            <LI_SIDE onClick={()=>{ navigate('/')}}>
-              문의내역
+            <LI_SIDE onClick={()=>{ navigate('/chat/login')}}>
+              1:1 문의
             </LI_SIDE>
 
           </UL_SIDE>

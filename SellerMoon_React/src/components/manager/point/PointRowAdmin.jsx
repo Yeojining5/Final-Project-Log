@@ -128,12 +128,12 @@ const PointRowAdmin = (props) => {
         <td>
           <div className="d-flex" style={{margin: "auto"}}>
             <Button onClick={handleShow}
-                    variant="outline-secondary" id="btn_search" style={{ width:"100px"}}>
+                    variant="outline-secondary" id="btn_search" style={{ width:"80px"}}>
               <i className="fa-regular fa-file-lines"></i>
                 &nbsp;수정
             </Button>
             {/* ************************[[ 삭제 버튼 클릭 시 해당 Row삭제**************************** */}
-            <Button variant="outline-secondary" id="btn_search" style={{ marginLeft: "20px", width:"100px"}}
+            <Button variant="outline-secondary" id="btn_search" style={{ marginLeft: "10px", width:"80px"}}
                     onClick={pointDelete}> <i className="fa-regular fa-trash-can"></i>
                 &nbsp;삭제
             </Button>

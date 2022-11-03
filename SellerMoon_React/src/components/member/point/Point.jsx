@@ -88,7 +88,7 @@ const Point = ({ pointList }) => {
                 />
 
                 <POINT_P>적립금 사용기준 및 사용기한</POINT_P>
-                <ul style={{ marginTop: "10px" }}>
+                <ul style={{ marginTop: "10px", marginBottom: "100px" }}>
                   <POINT_LI>
                     적립금은 구매금액 제한 없이 현금처럼 사용하실 수 있습니다.
                   </POINT_LI>  

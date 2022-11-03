@@ -5,8 +5,8 @@
 	<resultMap type="kh.sellermoon.admin.vo.FaqVO" id="faqMap"></resultMap>
 	
 	<select id="faqList" parameterType="map" resultType="java.util.Map">
-		select faq_no, admin_id, faq_category, faq_title, faq_content, faq_write_date, faq_view_count
-		from	tb_faq
+		SELECT faq_no, admin_id, faq_category, faq_title, faq_content, faq_write_date, faq_view_count
+		FROM	tb_faq
 		
 		<where>
 	  		<if test='faq_no != null'>
@@ -23,32 +23,32 @@
 			</if>		  		
 		</where>
 		
-		order by faq_no desc
+		ORDER BY faq_no desc
 	</select> 
 	
-	<insert id="faqinsert" parameterType="map">
-    	insert into tb_faq(faq_no, admin_id, faq_category, faq_title, faq_content, faq_write_date, faq_view_count) 
-    	values(seq_faq_no.nextval,#{admin_id},#{faq_category},#{faq_title}
-    			,#{faq_content},to_char(sysdate,'yyyy.mm.dd'),#{faq_view_count})
+	<insert id="faqInsert" parameterType="map">
+    	INSERT into tb_faq(faq_no, admin_id, faq_category, faq_title, faq_content, faq_write_date) 
+    	VALUES (seq_faq_no.nextval,#{admin_id},#{faq_category},#{faq_title}
+    			,#{faq_content},to_char(sysdate,'yyyy.mm.dd'))
     </insert>
     
-    <update id="faqupdate" parameterType="map">
-		update tb_faq
-		   set faq_category = #{faq_category}
+    <update id="faqUpdate" parameterType="map">
+		UPDATE tb_faq
+		   SET faq_category = #{faq_category}
 		      ,faq_title = #{faq_title}
 		      ,faq_content = #{faq_content}
-		 where faq_no = #{faq_no}
+		 WHERE faq_no = #{faq_no}
 	</update>
 	
-	<delete id="faqdelete" parameterType="map">
-		delete from tb_faq
-		 where faq_no = #{faq_no}
+	<delete id="faqDelete" parameterType="map">
+		DELETE from tb_faq
+		 WHERE faq_no = #{faq_no}
 	</delete>
 	
-	<update id="hitcount" parameterType="map">
-		update tb_faq
-		   set faq_view_count = faq_view_count + 1
-		 where faq_no = #{faq_no}
+	<update id="viewCount" parameterType="map">
+		UPDATE tb_faq
+		   SET faq_view_count = faq_view_count + 1
+		 WHERE faq_no = #{faq_no}
 	</update>
 
 </mapper>	

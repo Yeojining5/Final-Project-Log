@@ -47,6 +47,7 @@ body {
   border: none;
   font-size: 14px;
   line-height: 22px;
+  outline: none;
 }
 /* ***************************** */
 
@@ -156,7 +157,6 @@ footer {
   font-weight: 500;
   width: inherit;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
 .foot-info {
