@@ -31,7 +31,7 @@
 	
 	<insert id="pointInsert" parameterType="map">
     	INSERT INTO tb_point(point_no, point_date, point_used_saved, member_no, point_type)
-    	VALUES (seq_point_no.nextval,to_char(sysdate,'yyyy.mm.dd')
+    	VALUES (seq_tb_point_no.nextval,to_char(sysdate,'yyyy.mm.dd')
     			,#{point_used_saved},#{member_no}, #{point_type})
     </insert>
     
