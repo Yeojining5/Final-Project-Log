@@ -10,7 +10,7 @@ import { subslist, subspurchase } from '../../../service/dbLogic';
 import { useState } from 'react';
 import { subsdeliver } from './../../../service/dbLogic';
 
-const Subscription = ({pointList}) => {
+const Subscription = ({pointList, no, isLogin}) => {
 
   const [subsList, setSubsList] = useState({
     member_name: "",
@@ -28,6 +28,7 @@ const Subscription = ({pointList}) => {
   const [subsDeliver, setSubsDeliver] = useState({
     order_date: "",
     delivery_status: "",
+    delivery_date: "",
   });
 
   const [subsPurchase, setSubsPurchase] = useState({
@@ -37,13 +38,19 @@ const Subscription = ({pointList}) => {
   /* **************************************************** */
   /* 구독 기본정보 가져오기 */
   useEffect(() => {
-    const oracleDB = async () => {
-        const result = await subslist()
-        console.log(result.data[0])
-        setSubsList(result.data[0])
+    const subsList = async () => {
+        await subslist({member_no: no}).then((res) => {
+          if (res.data === null) {
+            return () => {};
+          } else {
+            console.log(res);
+            console.log(res.data);
+            setSubsList(res.data);
+          }
+        })
     }
-    oracleDB()
-    }, [])
+    subsList()
+    }, [no])
 
 
 /* ************************************************** */
@@ -51,13 +58,18 @@ const Subscription = ({pointList}) => {
 
   /* 구독 배송정보 가져오기 */
   useEffect(() => {
-    const oracleDB = async () => {
-        const result = await subsdeliver()
-        console.log(result.data[0])
-        setSubsDeliver(result.data[0])
+    const subsDeliver = async () => {
+        await subsdeliver({member_no: no}).then((res) => {
+          if (res.data === null) {
+            return () => {};
+          } else {
+            console.log(res.data);
+            setSubsDeliver(res.data);
+          }
+        })
     }
-    oracleDB()
-    }, [])
+    subsDeliver()
+    }, [no])
 
 
 /* ************************************************** */
@@ -65,13 +77,18 @@ const Subscription = ({pointList}) => {
 
   /* 구독 결제정보 가져오기 */
   useEffect(() => {
-    const oracleDB = async () => {
-        const result = await subspurchase()
-        console.log(result.data[0])
-        setSubsPurchase(result.data[0])
+    const subsPurchase = async () => {
+        await subspurchase({member_no: no}).then((res) => {
+          if (res.data === null) {
+            return () => {};
+          } else {
+            console.log(res.data);
+            setSubsPurchase(res.data);
+          }
+        })
     }
-    oracleDB()
-    }, [])
+    subsPurchase()
+    }, [no])
 
 
 /* ************************************************** */
@@ -109,20 +126,63 @@ const Subscription = ({pointList}) => {
 
               <thead>
                 <tr>
-                  <TH_NOW><i className="fa-regular fa-credit-card"></i><br/>결제완료</TH_NOW>
-                  <TH><i className="fa-solid fa-box-open"></i><br/>배송준비</TH>
-                  <TH><i className="fa-solid fa-truck"></i><br/>배송중</TH>
-                  <TH><i className="fa-regular fa-circle-check"></i><br/>배송완료</TH>
+                  {
+                    subsDeliver.DELIVERY_STATUS === "결제완료" 
+                    ? <TH_NOW><i className="fa-regular fa-credit-card"></i><br/>결제완료</TH_NOW>
+                    : <TH><i className="fa-regular fa-credit-card"></i><br/>결제완료</TH>
+                  }
+                  {
+                    subsDeliver.DELIVERY_STATUS === "배송준비" 
+                    ? <TH_NOW><i className="fa-solid fa-box-open"></i><br/>배송준비</TH_NOW>
+                    : <TH><i className="fa-solid fa-box-open"></i><br/>배송준비</TH>
+                  }
+                  {
+                    subsDeliver.DELIVERY_STATUS === "배송중" 
+                    ? <TH_NOW><i className="fa-solid fa-truck"></i><br/>배송중</TH_NOW>
+                    : <TH><i className="fa-solid fa-truck"></i><br/>배송중</TH>
+                  }
+                  {
+                    subsDeliver.DELIVERY_STATUS === "배송완료" 
+                    ? <TH_NOW><i className="fa-regular fa-circle-check"></i><br/>배송완료</TH_NOW>
+                    : <TH><i className="fa-regular fa-circle-check"></i><br/>배송완료</TH>
+                  }
                 </tr>
               </thead>
 
               <tbody>
                 <tr>
-                  <TD colSpan={4}>
-                    1회차 <strong>정기구독이 결제되었습니다.</strong>
-                    <br/>
-                    배송 준비 예정입니다.
-                  </TD>
+                  {
+                    subsDeliver.DELIVERY_STATUS === "결제완료" &&
+                      <TD colSpan={4}>
+                        1회차 <strong>정기구독이 결제되었습니다.</strong>
+                        <br/>
+                        배송 준비 예정입니다.
+                      </TD>
+                  }
+                  {
+                    subsDeliver.DELIVERY_STATUS === "배송준비" &&
+                      <TD colSpan={4}>
+                        결제가 승인되어 <strong>배송을 준비하고 있습니다.</strong>
+                        <br/>
+                        곧 배송이 시작됩니다.
+                      </TD>
+                  }
+                  {
+                    subsDeliver.DELIVERY_STATUS === "배송중" &&
+                      <TD colSpan={4}>
+                        고객님의 정기구독 상품을 <strong>배송중입니다.</strong>
+                        <br/>
+                        택배사의 사정에 따라 배송 지연이 있을 수 있습니다.
+                      </TD>
+                  }
+                  {
+                    subsDeliver.DELIVERY_STATUS === "배송완료" &&
+                      <TD colSpan={4}>
+                        1회차 정기구독 상품이 <strong>배송 완료되었습니다.</strong>
+                        <br/>
+                        감사합니다.
+                      </TD>
+                  }
                 </tr>
               </tbody>
             </TABLE>
@@ -206,7 +266,7 @@ const Subscription = ({pointList}) => {
                     결제수단
                     <br/>&nbsp;
                   </th>
-                  <td>신용카드</td>
+                  <td>{subsPurchase.PURCHASE_METHOD}</td>
                   <td>
                     <BROWN_BTN>
                       변경

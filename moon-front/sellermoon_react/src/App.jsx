@@ -190,7 +190,8 @@ function App({ authLogic }) {
         <Route path="/chat/login" element={<ChatLogin authLogic={authLogic} />} exact={true} />
         <Route path="/chat/chatroom/:userId" element={<ChatMessage authLogic={authLogic} />} exact={true} />
         
-        <Route path="/mypage/subscription" element={<Subscription authLogic={authLogic} pointList={pointList} />} exact={true} />
+        <Route path="/mypage/subscription" element={<Subscription pointList={pointList} isLogin={isLogin} no={no} />} exact={true} />
+        
 
 
         {/*************************  관리자 페이지 영역 *********************************************/}
