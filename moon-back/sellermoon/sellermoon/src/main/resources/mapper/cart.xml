@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.mapper.cartMapper">
+
+	<resultMap type="kh.sellermoon.member.vo.CartVO" id="cartMap">
+		<id property="cartNo" column="cart_no"/>
+		<result property="memberNo"     column="member_no"/>
+		<result property="mdNo"         column="md_no"/>
+		<result property="cartQuantity" column="cart_quantity"/>
+		<result property="orderType"    column="order_type"/>
+	</resultMap> 
+
+	<delete id="deleteCart" parameterType="String">
+		DELETE FROM tb_cart
+		 WHERE cart_no = #{cart_no}
+	</delete>
+	
+	<insert id="insertCart" parameterType="map">
+		INSERT INTO tb_cart(cart_no, member_no, md_no, cart_quantity, order_type)
+		VALUES(cart_seq.nextval, #{memberNo}, #{mdNo}, #{cartQuantity}, #{orderType})     	
+	</insert>
+	
+	<select id="getAllCartList" resultType="kh.sellermoon.member.vo.CartVO" parameterType="int">
+		select cart_no as cartNo from tb_cart where member_no = #{memberNo}
+	</select>
+
+	<select id="getCart" resultType="String">
+		select cart_no as cartNo from tb_cart where cart_no = 1
+	</select>
+
+
+</mapper>
