@@ -10,7 +10,7 @@ import { subslist, subspurchase } from '../../../service/dbLogic';
 import { useState } from 'react';
 import { subsdeliver } from './../../../service/dbLogic';
 
-const Subscription = ({pointList, no, isLogin}) => {
+const Subscription = ({myPoint, no, isLogin}) => {
 
   const [subsList, setSubsList] = useState({
     member_name: "",
@@ -108,13 +108,13 @@ const Subscription = ({pointList, no, isLogin}) => {
           <div className="col-9">
             <div className="list-wrapper">
 
-            {
-              pointList.map((point, i) => (
-                <NavbarMypage key={i} point={point} />
-              ))
-            }
+            <NavbarMypage myPoint={myPoint} />
 
             <P_STRONG>정기구독 현황</P_STRONG>
+
+{/* 구독내역 여부에 따라 다른 렌더링 */}
+{/* { subsList.SUB_NO > 0 ?
+      <> */}
 
             <TABLE>
               <colgroup>
@@ -132,9 +132,9 @@ const Subscription = ({pointList, no, isLogin}) => {
                     : <TH><i className="fa-regular fa-credit-card"></i><br/>결제완료</TH>
                   }
                   {
-                    subsDeliver.DELIVERY_STATUS === "배송준비" 
-                    ? <TH_NOW><i className="fa-solid fa-box-open"></i><br/>배송준비</TH_NOW>
-                    : <TH><i className="fa-solid fa-box-open"></i><br/>배송준비</TH>
+                    subsDeliver.DELIVERY_STATUS === "상품준비" 
+                    ? <TH_NOW><i className="fa-solid fa-box-open"></i><br/>상품준비</TH_NOW>
+                    : <TH><i className="fa-solid fa-box-open"></i><br/>상품준비</TH>
                   }
                   {
                     subsDeliver.DELIVERY_STATUS === "배송중" 
@@ -160,9 +160,9 @@ const Subscription = ({pointList, no, isLogin}) => {
                       </TD>
                   }
                   {
-                    subsDeliver.DELIVERY_STATUS === "배송준비" &&
+                    subsDeliver.DELIVERY_STATUS === "상품준비" &&
                       <TD colSpan={4}>
-                        결제가 승인되어 <strong>배송을 준비하고 있습니다.</strong>
+                        결제가 승인되어 <strong>상품을 준비하고 있습니다.</strong>
                         <br/>
                         곧 배송이 시작됩니다.
                       </TD>
@@ -186,8 +186,6 @@ const Subscription = ({pointList, no, isLogin}) => {
                 </tr>
               </tbody>
             </TABLE>
-
-
 
 
             <P_SMALL>1회차 정기구독 요약</P_SMALL>
@@ -221,6 +219,9 @@ const Subscription = ({pointList, no, isLogin}) => {
               </tbody>
             </table>
 
+            <br/>
+            <br/>
+
 
             <P_SMALL>다음 정기구독 현황</P_SMALL>
             <table>
@@ -249,7 +250,8 @@ const Subscription = ({pointList, no, isLogin}) => {
               </tbody>
             </table>
 
-
+            <br/>
+            <br/>
 
             <P_SMALL>결제 정보</P_SMALL>
             <table>
@@ -315,6 +317,10 @@ const Subscription = ({pointList, no, isLogin}) => {
                 </tr>
               </tbody>
             </table>
+      {/* </>
+
+  : <h2>정기구독 내역이 없습니다</h2>
+} */}
 
             <br />
             <br />

@@ -3,7 +3,9 @@ import { MYUL, MYLI1, MYLI2, MYSPAN, MYP } from './../../../styles/MypageStyle';
 
 const NavbarMypage = (props) => {
 
-  let result = props.point;
+  let result = props.myPoint;
+
+  const userLevel = sessionStorage.getItem("user_level");
 
   return (
     <>
@@ -21,7 +23,12 @@ const NavbarMypage = (props) => {
             회원등급 
             <i className="fa-solid fa-angle-right"></i>
           </MYSPAN>
-          <MYP>초승달</MYP>
+          <MYP>
+            {
+              userLevel === "0" ? "초승달"
+                : userLevel === "1" ? "반달" : "보름달"
+            }
+          </MYP>
         </MYLI2>
 
         <MYLI2>
@@ -29,7 +36,12 @@ const NavbarMypage = (props) => {
             적립금 
             <i className="fa-solid fa-angle-right"></i>
           </MYSPAN>
-          <MYP>{result.POINT_SUM.toLocaleString()} P</MYP>
+          <MYP>
+            {
+              result.POINT_SUM > 0 ? result.POINT_SUM : 0
+            }
+            &nbsp;P
+          </MYP>
         </MYLI2>
       </MYUL>
     </>

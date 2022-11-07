@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { memberProfile } from "../../../service/dbLogic";
+import { CONTENTS } from "../../../styles/NoticeStyle";
+import Footer from "../Common/Footer";
+import Header from "../Common/Header";
+import SidebarMypage from './../Common/SidebarMypage';
+import NavbarMypage from './../Common/NavbarMypage';
 
-const MyAccount = ({ no, isLogin }) => {
+const MyAccount = ({ no, isLogin, myPoint }) => {
   const [memInfo, setMemInfo] = useState({
     member_no: 0,
     member_name: "",
@@ -35,6 +40,19 @@ const MyAccount = ({ no, isLogin }) => {
   }, [no]);
   return (
     <>
+      <Header />
+
+      <div className="container">
+        <CONTENTS className="row">
+
+          <SidebarMypage />
+
+          <div className="col-9">
+            <div className="list-wrapper">
+
+              <NavbarMypage myPoint={myPoint} />
+
+    {/* ************회원정보시작 ************ */}
       <div>
         <h1>회원정보</h1>&nbsp;&nbsp;
         <p>
@@ -65,6 +83,16 @@ const MyAccount = ({ no, isLogin }) => {
         <br />
         회원코드 : {memInfo.member_code}
       </div>
+      {/* ************************************ */}
+
+            </div> {/* end of list-wrapper */}
+          </div> {/* end of col */}
+
+        </CONTENTS>
+      </div> {/* end of container */}
+
+      <Footer />
+
     </>
   );
 };
