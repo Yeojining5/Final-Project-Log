@@ -7,6 +7,8 @@ import { noticelist } from './../../../service/dbLogic';
 import Pagination from './../../member/Common/Pagination';
 import NoticeRowAdmin from './NoticeRowAdmin';
 import { BROWN_BTN } from '../../../styles/NoticeStyle';
+import Header from '../Common/Header';
+import Footer from '../Common/Footer';
 
 
 
@@ -157,6 +159,8 @@ const sortCount = () => {
 
   return (
     <>
+      <Header />
+
       <div className="container">
 
         <h4>공지사항 관리</h4>
@@ -313,6 +317,9 @@ const sortCount = () => {
 </Modal>
 {/* ========[[[ 등록 모달 끝]]]======= */}
       </div>
+
+
+      <Footer />
     </>
   );
 };

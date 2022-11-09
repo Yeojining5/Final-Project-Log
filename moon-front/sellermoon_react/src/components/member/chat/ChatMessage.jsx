@@ -110,7 +110,7 @@ const ChatMessage = ({ authLogic }) => {
       userName: userName,
       userPhoto: userPhoto,
       curtime: setClock(),
-      m_no: setClock(),
+      m_no: Date.now(),
       [e.target.name]: e.target.value
     })
   }

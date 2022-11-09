@@ -17,7 +17,7 @@ import FaqRowAdmin from "./FaqRowAdmin";
 import Pagination from "./../../member/Common/Pagination";
 import { BROWN_BTN } from "../../../styles/NoticeStyle";
 
-const FaqAdmin = ({ isLogin, isAdmin }) => {
+const FaqAdmin = () => {
   let navigate = useNavigate();
 
   const [faqList, setFaqList] = useState([]);

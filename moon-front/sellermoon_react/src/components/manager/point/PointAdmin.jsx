@@ -213,12 +213,12 @@ const sortType = () => {
 
           <table>
             <colgroup>
-              <col style={{ width: "10%" }} />
-              <col style={{ width: "13%" }} />
+              <col style={{ width: "6%" }} />
+              <col style={{ width: "12%" }} />
               <col style={{ width: "12%" }} />
               <col style={{ width: "23%" }} />
               <col style={{ width: "13%" }} />
-              <col style={{ width: "13%" }} />
+              <col style={{ width: "18%" }} />
               <col style={{ width: "16%" }} />
             </colgroup>
 

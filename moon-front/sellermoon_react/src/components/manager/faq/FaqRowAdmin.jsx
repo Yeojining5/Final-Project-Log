@@ -4,10 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Swal from "sweetalert2";
 
-const FaqRowAdmin = ({ props, isLogin, isAdmin }) => {
+const FaqRowAdmin = (props) => {
   let navigate = useNavigate();
-
-  let result = props.faq;
 
   const faqDelete = (e) => {
     e.preventDefault();
@@ -46,17 +44,17 @@ const FaqRowAdmin = ({ props, isLogin, isAdmin }) => {
   return (
     <>
       <tr>
-        <td>{result.FAQ_NO}</td>
-        <td>{result.FAQ_CATEGORY}</td>
-        <td>{result.FAQ_TITLE}</td>
-        <td>{result.ADMIN_ID}</td>
-        <td>{result.FAQ_WRITE_DATE}</td>
-        <td>{result.FAQ_VIEW_COUNT}</td>
+        <td>{props.faq.FAQ_NO}</td>
+        <td>{props.faq.FAQ_CATEGORY}</td>
+        <td>{props.faq.FAQ_TITLE}</td>
+        <td>{props.faq.ADMIN_ID}</td>
+        <td>{props.faq.FAQ_WRITE_DATE}</td>
+        <td>{props.faq.FAQ_VIEW_COUNT}</td>
         <td>
           <div className="d-flex" style={{ margin: "auto" }}>
             <Button
               onClick={() => {
-                navigate("/admin/faq/update/" + result.FAQ_NO);
+                navigate("/admin/faq/update/" + props.faq.FAQ_NO);
               }}
               variant="outline-secondary"
               id="btn_search"

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const FORM = styled.form`
-  padding: 30px 10px;
+  padding: 20px 10px;
   border-bottom: 2px solid #b29d82;
 `
 
@@ -11,7 +11,7 @@ export const POINTSUM = styled.span`
 `
 
 export const ORDER_WRAPPER = styled.div`
-  padding: 10px 20px;
+  padding: 20px 20px;
   border-left: 2px solid #b29d82;
 `
 

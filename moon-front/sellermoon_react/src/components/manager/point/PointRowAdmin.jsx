@@ -176,7 +176,7 @@ const PointRowAdmin = (props) => {
                   <option value="0">회원가입적립</option>
                   <option value="1">추천인기입</option>
                   <option value="2">주문적립</option>
-2                  <option value="3">상품후기등록</option>
+                  <option value="3">상품후기등록</option>
                   <option value="4">베스트후기선정</option>
                   <option value="5">적립금사용</option>
                 </Form.Select>
