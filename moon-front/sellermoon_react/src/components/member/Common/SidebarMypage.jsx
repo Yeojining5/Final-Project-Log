@@ -68,7 +68,7 @@ const SidebarMypage = () => {
 
             <LI_SIDE
               onClick={() => {
-                navigate("/");
+                navigate("/mypage/profile");
               }}
             >
               계정설정

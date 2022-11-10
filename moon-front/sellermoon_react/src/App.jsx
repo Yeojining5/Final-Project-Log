@@ -39,7 +39,7 @@ import ChatLogin from "./components/member/chat/ChatLogin";
 import ChatMessage from "./components/member/chat/ChatMessage";
 import PointAdmin from "./components/manager/point/PointAdmin";
 import Subscription from "./components/member/subscription/Subscription";
-import { mypoint } from "./service/dbLogic";
+import { mypoint, mysubs } from "./service/dbLogic";
 import AdminBoardDetail from "./components/manager/board/AdminBoardDetail";
 import AdminBoardList from "./components/manager/board/AdminBoardList";
 import MemberBoardList from "./components/member/board/MemberBoardList";
@@ -104,7 +104,7 @@ function App({ authLogic, pictureUpload }) {
   };
 
   /* **************************************************** */
-  //토탈포인트 가져오기 */
+  // 토탈포인트 가져오기 */
 
   const [myPoint, setMyPoint] = useState({ point_sum: "" });
 
@@ -114,13 +114,31 @@ function App({ authLogic, pictureUpload }) {
         if (res.data === null) {
           return 0;
         } else {
-          //console.log(res);
           //console.log(res.data);
           setMyPoint(res.data);
         }
       });
     };
     myPoint();
+  }, [no]);
+  /* **************************************************** */
+
+  // 나의 정기구독 가져오기 */
+
+  const [mySubs, setMySubs] = useState({ md_name: "" });
+
+  useEffect(() => {
+    const mySubs = async () => {
+      await mysubs({ member_no: no }).then((res) => {
+        if (res.data === null) {
+          return 0;
+        } else {
+          //console.log(res.data);
+          setMySubs(res.data);
+        }
+      });
+    };
+    mySubs();
   }, [no]);
   /* **************************************************** */
   return (
@@ -170,7 +188,7 @@ function App({ authLogic, pictureUpload }) {
           exact={true}
           element={
             isLogin ? (
-              <MyAccount isLogin={isLogin} no={no} logout={logout} />
+              <MyAccount isLogin={isLogin} no={no} logout={logout} myPoint={myPoint} mySubs={mySubs}/>
             ) : (
               <Navigate to="/login" />
             )
@@ -181,7 +199,7 @@ function App({ authLogic, pictureUpload }) {
           exact={true}
           element={
             isLogin ? (
-              <MyAccountM isLogin={isLogin} no={no} logout={logout} />
+              <MyAccountM isLogin={isLogin} no={no} logout={logout} myPoint={myPoint} mySubs={mySubs} />
             ) : (
               <Navigate to="/login" />
             )
@@ -192,7 +210,7 @@ function App({ authLogic, pictureUpload }) {
           exact={true}
           element={
             isLogin ? (
-              <MyDelAccount isLogin={isLogin} no={no} />
+              <MyDelAccount isLogin={isLogin} no={no} myPoint={myPoint} mySubs={mySubs} />
             ) : (
               <Navigate to="/login" />
             )
@@ -200,13 +218,13 @@ function App({ authLogic, pictureUpload }) {
         />
         <Route
           path="/mypage/point"
-          element={<Point myPoint={myPoint} isLogin={isLogin} no={no} />}
+          element={<Point myPoint={myPoint} isLogin={isLogin} no={no} mySubs={mySubs} />}
           exact={true}
         />
 
         <Route
           path="/mypage/friends"
-          element={<Friends myPoint={myPoint} isLogin={isLogin} no={no} />}
+          element={<Friends myPoint={myPoint} isLogin={isLogin} no={no} mySubs={mySubs} />}
           exact={true}
         />
 
@@ -227,6 +245,7 @@ function App({ authLogic, pictureUpload }) {
             <Subscription
               myPoint={myPoint}
               isLogin={isLogin}
+              mySubs={mySubs}
               no={no}
               logout={logout}
             />

@@ -75,3 +75,15 @@ export const BROWN_BTN = styled.button `
   font-weight : 600;
 `
 
+export const BROWN_BTN2 = styled.button `
+  width: 150px;
+  height: 42px;
+  color: #fafafa;
+  background-color: #5e514d;
+  border: none;
+  margin : 0px 15px;
+  font-weight : 600;
+  width: 200px;
+  padding : 10px 30px;
+`
+

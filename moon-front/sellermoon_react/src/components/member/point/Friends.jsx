@@ -16,7 +16,7 @@ import FriendsAlert from "./FriendsAlert";
 import { memberProfile } from "../../../service/dbLogic";
 import { useEffect } from "react";
 
-const Friends = ({ myPoint, no, isLogin, logout }) => {
+const Friends = ({ myPoint, no, isLogin, logout, mySubs }) => {
   let [alert, setAlert] = useState(false);
 
   const copyCode = () => {
@@ -56,7 +56,7 @@ const Friends = ({ myPoint, no, isLogin, logout }) => {
           <SidebarMypage />
           <div className="col-9 mb-5">
             <div className="list-wrapper">
-              <NavbarMypage myPoint={myPoint} />
+              <NavbarMypage myPoint={myPoint} mySubs={mySubs} />
 
               <div style={{ textAlign: "center", marginBottom: "150px" }}>
                 <FRIEND_IMG
@@ -64,10 +64,7 @@ const Friends = ({ myPoint, no, isLogin, logout }) => {
                   alt="friend_event"
                 />
                 <FRIEND_P>나의 초대코드</FRIEND_P>
-                {/* <FRIEND_CODE>YE98QYQU</FRIEND_CODE> */}{" "}
-                {/* ##################################### 상수 */}
                 <FRIEND_CODE value={mycode} id="friendCode" readOnly />{" "}
-                {/* ############################# 상수 */}
                 <FRIEND_BTN onClick={copyCode}>초대코드 복사하기</FRIEND_BTN>
                 {/* 복사 완료 알림창 */}
                 {alert === true ? (
