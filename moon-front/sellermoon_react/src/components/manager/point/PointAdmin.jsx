@@ -7,6 +7,8 @@ import Pagination from './../../member/Common/Pagination';
 import PointRowAdmin from './PointRowAdmin';
 import { pointlist } from './../../../service/dbLogic';
 import axios from "axios"
+import Header from '../Common/Header';
+import Footer from '../Common/Footer';
 
 
 const PointAdmin = () => {
@@ -167,7 +169,9 @@ const sortType = () => {
 
   return (
     <>
-      <div className="container">
+      <Header />
+
+      <div className="container mt-4 mb-5">
 
       <h4>적립금 수동 관리</h4>
       <hr />
@@ -302,6 +306,8 @@ const sortType = () => {
           </Row>
 
       </div>
+
+      <Footer />
     </>
   );
 };

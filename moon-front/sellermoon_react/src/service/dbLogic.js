@@ -657,3 +657,20 @@ export const mysubs = (params) => {
     }
   });
 };
+
+/* 마이페이지 - 주문배송조회 */
+export const myorder = (params) => {
+  return new Promise((resolve, reject) => {
+    try {
+      const response = axios({
+        method: "get",
+        url: process.env.REACT_APP_SPRING_IP + "order/myorder",
+        params: params,
+      });
+
+      resolve(response);
+    } catch (error) {
+      reject(error);
+    }
+  });
+};

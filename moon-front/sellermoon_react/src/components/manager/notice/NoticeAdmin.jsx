@@ -63,7 +63,7 @@ const NoticeAdmin = () => {
     e.preventDefault()
     let list = {
         // json 형태로 spring에 값을 넘김
-        admin_id: "001", /////////////////// 일단 상수로 넣음
+        admin_id: "admin", /////////////////// 일단 상수로 넣음
         notice_title: e.target.notice_title.value,
         notice_content: e.target.notice_content.value,
         notice_category: e.target.notice_category.value,
@@ -161,7 +161,7 @@ const sortCount = () => {
     <>
       <Header />
 
-      <div className="container">
+      <div className="container mt-4 mb-5">
 
         <h4>공지사항 관리</h4>
         <hr />

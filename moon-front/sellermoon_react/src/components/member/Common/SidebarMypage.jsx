@@ -52,7 +52,7 @@ const SidebarMypage = () => {
 
             <LI_SIDE
               onClick={() => {
-                navigate("/");
+                navigate("/mypage/orderlist");
               }}
             >
               주문배송조회

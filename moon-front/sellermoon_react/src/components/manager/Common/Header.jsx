@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar, Container, Button, Nav, Form } from 'react-bootstrap';
+import { Navbar, Container, Button, Nav, Form, NavDropdown } from 'react-bootstrap';
 import TabCards from '../main/TabCards';
 import { Link, useNavigate } from 'react-router-dom';
 import data from '../../../data.js'
@@ -50,6 +50,11 @@ const Header = () => {
               <Link to="/aorder" className="nav-link">주문 관리</Link>
               <Link to="/aboard" className="nav-link">게시판 관리</Link>
               <Link to="/astore" className="nav-link">거래처 관리</Link>
+              <Link to="/admin/point" className="nav-link">적립금 관리</Link>
+              <NavDropdown title="고객센터 관리" id="basic-nav-dropdown" className="nav-menu">
+                <NavDropdown.Item onClick={() => {navigate("/admin/notice");}}>공지사항</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => {navigate("/admin/faq");}}>FAQ</NavDropdown.Item>
+              </NavDropdown>
             </Nav>
             <Button className="btn btn-light btn-outline-secondary px-3" onClick={sellerMoon}>회원용 사이트로 이동하기</Button>&nbsp;
             <Button className="btn btn-light btn-outline-secondary px-3" onClick={logout}>로그아웃</Button>

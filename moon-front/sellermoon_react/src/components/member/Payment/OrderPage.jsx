@@ -253,8 +253,8 @@ const OrderPage = ({ no, props, myPoint }) => {
         // json 형태로 spring에 값을 넘김
         ORDER_NO: res.merchant_uid,
         MEMBER_NO: no,
-        CART_NO: "1", /////////////////// 일단 상수로 넣음 -> insert 안해도 될거가틈..
-        //CART_NO: "",
+        //CART_NO: "1", /////////////////// 일단 상수로 넣음 -> insert 안해도 될거가틈..
+        CART_NO: payList[0].CART_NO,
         ORDER_PAYMENT: res.paid_amount,
         ORDER_AMOUNT:
           parseInt(orderInfo.order_amount) -

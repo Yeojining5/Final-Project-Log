@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { BROWN_BTN } from "../../../styles/NoticeStyle";
 import { faqlist } from "../../../service/dbLogic";
+import Header from "../Common/Header";
+import Footer from "../Common/Footer";
 
 const FaqUpAdmin = ({ isLogin, isAdmin }) => {
   let navigate = useNavigate();
@@ -80,7 +82,9 @@ const FaqUpAdmin = ({ isLogin, isAdmin }) => {
 
   return (
     <>
-      <div className="container">
+      <Header />
+
+      <div className="container mt-4 mb-5">
         <h4>FAQ 수정</h4>
 
         {/* ##########################[[Form 전송 update]]########################### */}
@@ -164,6 +168,8 @@ const FaqUpAdmin = ({ isLogin, isAdmin }) => {
         </form>
         {/* ##########################[[Form 전송 update]]########################### */}
       </div>
+
+      <Footer />
     </>
   );
 };

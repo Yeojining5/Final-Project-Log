@@ -16,6 +16,8 @@ import { TABTITLE } from "./../../../styles/MainStyle";
 import FaqRowAdmin from "./FaqRowAdmin";
 import Pagination from "./../../member/Common/Pagination";
 import { BROWN_BTN } from "../../../styles/NoticeStyle";
+import Header from "../Common/Header";
+import Footer from "../Common/Footer";
 
 const FaqAdmin = () => {
   let navigate = useNavigate();
@@ -63,7 +65,7 @@ const FaqAdmin = () => {
 
     let list = {
       // json 형태로 spring에 값을 넘김
-      admin_id: "002", /////////////////// 일단 상수로 넣음
+      admin_id: "admin", /////////////////// 일단 상수로 넣음
       faq_title: e.target.faq_title.value,
       faq_content: e.target.faq_content.value,
       faq_category: category,
@@ -156,7 +158,9 @@ const FaqAdmin = () => {
 
   return (
     <>
-      <div className="container">
+      <Header />
+
+      <div className="container mt-4 mb-5">
         <h4>FAQ 관리</h4>
         <hr />
 
@@ -433,6 +437,8 @@ const FaqAdmin = () => {
         </Modal>
         {/* ========[[[ 등록 모달 끝]]]======= */}
       </div>
+
+      <Footer />
     </>
   );
 };

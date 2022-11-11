@@ -446,9 +446,9 @@ const cancelPause = (e) => {
                         </th>
                         <td>
                           <h5><strong>
-                            {subsVO.SUB_PERIOD===28 ? setDate1() 
-                              : subsVO.SUB_PERIOD===56 ? setDate2() 
-                                : subsVO.SUB_PERIOD===84 ? setDate3() : "해지상태 입니다"
+                            {subsVO.SUB_PERIOD === 28 ? setDate1() 
+                              : subsVO.SUB_PERIOD === 56 ? setDate2() 
+                                : subsVO.SUB_PERIOD === 84 ? setDate3() : "해지상태 입니다"
                             }
                           </strong></h5>
                         </td>

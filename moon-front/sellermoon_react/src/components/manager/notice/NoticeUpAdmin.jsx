@@ -5,6 +5,8 @@ import axios from "axios"
 import Swal from 'sweetalert2'
 import { noticelist } from './../../../service/dbLogic';
 import { FILEDOWN, BROWN_BTN } from './../../../styles/NoticeStyle';
+import Header from '../Common/Header';
+import Footer from '../Common/Footer';
 
 const NoticeUpAdmin = () => {
 
@@ -92,8 +94,9 @@ const NoticeUpAdmin = () => {
 
   return (
     <>
-      
-      <div className="container">
+      <Header />
+
+      <div className="container mt-4 mb-5">
         <h4>공지사항 수정</h4>
         
       {/* ##########################[[Form 전송 update]]########################### */}
@@ -165,7 +168,8 @@ const NoticeUpAdmin = () => {
       {/* ##########################[[Form 전송 update]]########################### */}
         
       </div>
-          
+
+      <Footer />
     </>
   );
 };
