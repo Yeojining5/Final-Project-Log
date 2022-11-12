@@ -25,6 +25,6 @@ export const PLUSBTN = styled.button`
 `;
 
 export const STARSPAN = styled.span`
-  color: #ead3b1;
-  font-size: 28px;
+  color: #ffca28;
+  font-size: 25px;
 `;

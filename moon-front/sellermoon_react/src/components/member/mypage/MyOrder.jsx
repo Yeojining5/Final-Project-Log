@@ -6,7 +6,7 @@ import Header from './../Common/Header';
 import { CONTENTS } from './../../../styles/NoticeStyle';
 import SidebarMypage from './../Common/SidebarMypage';
 import NavbarMypage from './../Common/NavbarMypage';
-import { OTABLE, OTH, P_STRONG } from './../../../styles/SubStyle';
+import { OTABLE, OTH, OTD1 } from './../../../styles/SubStyle';
 import MyOrderRow from './MyOrderRow';
 
 const MyOrder = ({ myPoint, no, isLogin, logout, mySubs }) => {
@@ -66,14 +66,25 @@ const MyOrder = ({ myPoint, no, isLogin, logout, mySubs }) => {
 
         <tbody>
           {
+            orderList.length > 0
+            ?
             orderList.map((order, i) => (
               <MyOrderRow key={i} order={order} />
             ))
+            :
+            <tr style={{textAlign:"center"}}>
+              <OTD1 colSpan={3}>
+                <br/>
+                <br/>
+                <h5 style={{fontWeight:"600"}}>아직 조회할 수 있는 주문내역이 없습니다.</h5>
+                <br/>
+                <br/>
+              </OTD1>
+            </tr>
           }
         </tbody>
+
       </OTABLE>
-
-
 
 
                   </div>{" "}

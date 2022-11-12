@@ -77,7 +77,7 @@ font-size: 1.23rem;
 export const OTD1 = styled.td`
 border-bottom: 1px solid #e6e6e6;
 height: 55px;
-padding: 8px 20px;
+padding: 5px 20px;
 `
 
 export const OTD2 = styled.td`
@@ -89,7 +89,7 @@ padding: 8px 20px;
 export const OTD3 = styled.td`
 border-bottom: 2px solid #b29d82;
 height: 55px;
-padding: 8px 20px;
+padding: 7px 25px;
 text-align: center;
 `
 

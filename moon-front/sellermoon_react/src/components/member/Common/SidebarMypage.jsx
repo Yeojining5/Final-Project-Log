@@ -17,11 +17,7 @@ const SidebarMypage = () => {
     <>
       <div className="col-3">
         <CONT_SIDE>
-          <P_SIDE
-            onClick={() => {
-              navigate("/mypage");
-            }}
-          >
+          <P_SIDE>
             My Page
           </P_SIDE>
 
@@ -36,7 +32,7 @@ const SidebarMypage = () => {
 
             <LI_SIDE
               onClick={() => {
-                navigate("/");
+                navigate("/mypage/board");
               }}
             >
               MyMoonStory

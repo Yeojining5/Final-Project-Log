@@ -674,3 +674,20 @@ export const myorder = (params) => {
     }
   });
 };
+
+/* 마이페이지 -커뮤니티 */
+export const myboard = (params) => {
+  return new Promise((resolve, reject) => {
+    try {
+      const response = axios({
+        method: "get",
+        url: process.env.REACT_APP_SPRING_IP + "member/board/myboard",
+        params: params,
+      });
+
+      resolve(response);
+    } catch (error) {
+      reject(error);
+    }
+  });
+};

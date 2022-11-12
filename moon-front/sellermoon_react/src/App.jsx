@@ -60,6 +60,7 @@ import OrderD from "./components/member/orderdetail/OrderD";
 import OrderPage from "./components/member/Payment/OrderPage";
 import SorderPage from "./components/member/Payment/SorderPage";
 import MyOrder from "./components/member/mypage/MyOrder";
+import MyBoard from './components/member/mypage/MyBoard';
 
 function App({ authLogic, pictureUpload }) {
   let [no, setNo] = useState(0); // 회원 번호 담기 props로 넘겨주기 위함
@@ -341,6 +342,11 @@ function App({ authLogic, pictureUpload }) {
           exact={true}
           path="/mypage/orderlist"
           element={<MyOrder isLogin={isLogin} no={no} myPoint={myPoint} mySubs={mySubs} />}
+        />
+        <Route
+          exact={true}
+          path="/mypage/board"
+          element={<MyBoard isLogin={isLogin} no={no} myPoint={myPoint} mySubs={mySubs} />}
         />
         
         
