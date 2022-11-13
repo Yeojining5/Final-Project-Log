@@ -94,4 +94,12 @@ public class MemberBoardDao {
 		}
 		return result;
 	}
+
+	public List<Map<String, Object>> myBoard(Map<String, Object> pMap) {
+		List<Map<String, Object>> myBoard = null;
+		myBoard = sqlSessionTemplate.selectList("myBoard",pMap);
+	      logger.info("pMap : "+pMap);
+	      return myBoard;
+	}
+
 }

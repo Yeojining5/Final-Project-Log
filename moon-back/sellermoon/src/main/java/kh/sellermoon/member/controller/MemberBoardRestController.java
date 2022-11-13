@@ -6,6 +6,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,4 +35,18 @@ public class MemberBoardRestController {
 		gBoardList = g.toJson(boardList);
 		return gBoardList;
 	}
+	
+	// 마이페이지
+	@GetMapping("myboard")
+	public String myBoard(Model model, @RequestParam Map<String, Object> pMap) {
+	      logger.info("myBoard 호출 성공");
+	      
+	      List<Map<String, Object>> myBoard = null;
+	      myBoard = boardLogic.myBoard(pMap);
+	      String temp = null;
+	      Gson g = new Gson();
+	      temp = g.toJson(myBoard);
+	      return temp;
+	}
+	
 }

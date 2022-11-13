@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.mapper.reivewMapper">
+<resultMap type="java.util.Map" id="reviewMap"></resultMap>
+	
+	<!-- 리뷰 등록 -->
+	<insert id="insertReview" parameterType="kh.sellermoon.member.vo.ReviewVO">
+		INSERT INTO TB_MDREVIEW(md_review_no, member_no, md_no
+		                        ,md_review_content, md_review_written_date, md_review_like
+		                        , md_star, best_review)
+		VALUES (MD_REVIEW_NO_SEQ.NEXTVAL, #{member_no}, #{md_no}, #{md_review_content}
+		        , TO_CHAR(SYSDATE, 'YYYY-MM-DD'), 0, #{md_star}, 'N')
+	</insert>
+
+	<!-- 리뷰 등록시 포인트 100원 지급 -->
+   <insert id="reviewPoint" parameterType="kh.sellermoon.member.vo.PointVO">
+	   	INSERT INTO TB_POINT(point_no, point_date, point_used_saved, member_no, point_type)
+	               VALUES (SEQ_TB_POINT_NO.NEXTVAL
+	                 ,TO_CHAR(SYSDATE, 'YYYY-MM-DD HH:MM:SS'),100,#{member_no},3)
+   </insert>
+   
+   <!-- 하나의 상품의 모든 리뷰 보기 -->
+   <select id="OneMdAllReview" parameterType="java.util.Map" resultType="map">
+   		SELECT rv.md_review_no, rv.member_no, rv.md_no, rv.md_review_content
+       ,rv.md_review_written_date, rv.md_review_like, rv.md_star
+       , tm.member_name
+		FROM TB_MDREVIEW rv, TB_MEMBER tm
+		WHERE md_no =#{md_no}
+		       and rv.member_no = tm.member_no
+		ORDER BY md_review_no desc
+   </select>
+   
+   <!-- 1명의 회원 모든 리뷰 보기 (마이페이지) -->
+   <select id="OneMemAllReview" parameterType="java.util.Map" resultType="map">
+   		SELECT rv.md_review_no, rv.member_no, rv.md_no, rv.md_review_content
+       ,rv.md_review_written_date, rv.md_review_like, rv.md_star
+       ,md.md_name
+		FROM TB_MDREVIEW rv, TB_MD md
+		WHERE member_no =#{member_no}
+		      and rv.md_no = md.md_no
+		ORDER BY rv.md_review_no desc
+   </select>
+   
+   <!-- 리뷰 좋아요 -->
+   <update id="likeReview" parameterType="kh.sellermoon.member.vo.ReviewVO">
+	   UPDATE TB_MDREVIEW
+		SET md_review_like=md_review_like+1
+		WHERE md_review_no = #{md_review_no}
+   </update>
+   
+   <!-- 리뷰 수정 -->
+   <update id="updReview" parameterType="kh.sellermoon.member.vo.ReviewVO">
+	   UPDATE TB_MDREVIEW
+		SET md_review_content =#{md_review_content}
+		WHERE md_review_no = #{md_review_no}
+   </update>
+   
+   <!-- 리뷰 수정 위한 select -->
+   <select id="updforReview" resultType="kh.sellermoon.member.vo.ReviewVO">
+	   SELECT *
+		FROM TB_MDREVIEW
+		WHERE md_review_no = #{md_review_no}
+   </select>
+   
+   <!-- 리뷰 삭제 -->
+	<delete id="delReview" parameterType="kh.sellermoon.member.vo.ReviewVO">
+		DELETE FROM TB_MDREVIEW
+		WHERE md_review_no = #{md_review_no}
+	</delete>
+
+</mapper>

@@ -83,7 +83,7 @@
 	
 	<!-- 회원 로그인 로직에서 비밀번호를 비교하기때문에 password 조건절 필요없음 -->
 	<select id="memberLogin" resultType="kh.sellermoon.member.vo.MemberVO">
-		SELECT member_no, member_name, member_password, member_email
+		SELECT member_no, member_name, member_password, member_email, member_level
 		FROM TB_MEMBER
 		WHERE member_email = #{member_email}
 	</select>

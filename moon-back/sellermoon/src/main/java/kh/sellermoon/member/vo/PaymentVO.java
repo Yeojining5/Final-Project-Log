@@ -8,6 +8,7 @@ public class PaymentVO {
 	int  ORDER_DATE       =0;       
 	int  ORDER_AMOUNT     =0;       
 	int  ORDER_USED_POINT =0;  
+	int  POINT_USED_SAVED =0;  
 	String  PURCHASE_NO       ="";   
 	String  PURCHASE_METHOD       ="";   
 	String ORDER_DE_NO        ="";
@@ -15,5 +16,7 @@ public class PaymentVO {
 	int ORDER_DE_PRICE    =0; 
 	String  ORDER_DE_CANCEL   ="";
 	String  DELIVERY_STATUS   ="";
+	int  DELIVERY_FEE   =0;
+	int  SUB_NO   =0;
 	
 }

@@ -8,6 +8,8 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -61,6 +63,35 @@ public class RestSubsController {
 		Gson g = new Gson();
 		temp = g.toJson(subsPurchase);
 		return temp;
+	}
+	
+	@GetMapping("mysubs")
+	public String mySubs(Model model, @RequestParam Map<String, Object> pMap) {
+		logger.info("mySubs 호출 성공");
+		
+		Map<String, Object> mySubs = null;
+		mySubs = subsLogic.mySubs(pMap);
+		logger.info(mySubs);
+		String temp = null;
+		Gson g = new Gson();
+		temp = g.toJson(mySubs);
+		return temp;
+	}
+	
+	@PostMapping("periodupdate")
+	public String periodUpdate(@RequestBody Map<String,Object> pMap) {
+		logger.info("periodUpdate 호출 성공");
+		int result = 0;
+		result = subsLogic.periodUpdate(pMap);
+		return String.valueOf(result);
+	}
+	
+	@PostMapping("pauseupdate")
+	public String pauseUpdate(@RequestBody Map<String,Object> pMap) {
+		logger.info("pauseUpdate 호출 성공");
+		int result = 0;
+		result = subsLogic.pauseUpdate(pMap);
+		return String.valueOf(result);
 	}
 	
 	

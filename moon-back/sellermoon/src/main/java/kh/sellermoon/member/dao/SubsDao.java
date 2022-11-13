@@ -40,6 +40,38 @@ public class SubsDao {
 	      return subsPurchase;
 	}
 
+	public int periodUpdate(Map<String, Object> pMap) {
+		logger.info("periodUpdate 호출 성공");
+		int result = 0;
+	    try {
+	    	result = sqlSessionTemplate.update("periodUpdate",pMap);
+	    	logger.info("result : "+result);
+		} catch (Exception e) {
+			logger.info("Exception : "+e.toString());
+		}
+		return result;
+	}
+
+	public int pauseUpdate(Map<String, Object> pMap) {
+		logger.info("pauseUpdate 호출 성공");
+		int result = 0;
+	    try {
+	    	result = sqlSessionTemplate.update("pauseUpdate",pMap);
+	    	logger.info("result : "+result);
+		} catch (Exception e) {
+			logger.info("Exception : "+e.toString());
+		}
+		return result;
+	}
+
+	public Map<String, Object> mySubs(Map<String, Object> pMap) {
+		logger.info(pMap.get("member_no"));
+		Map<String, Object> mySubs = null;
+		mySubs = sqlSessionTemplate.selectOne("mySubs",pMap);
+	      logger.info("pMap : "+pMap);
+	      return mySubs;
+	}
+
 	
 	
 }

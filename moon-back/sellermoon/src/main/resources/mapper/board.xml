@@ -85,5 +85,13 @@
 	
 	<!-- [[[[[[[[[[[[[[[[[[[[[[ 회원 쿼리 종료 ]]]]]]]]]]]]]]]]]]]]]] -->
 	
+	<select id="myBoard" parameterType="java.util.Map" resultType="map">
+		SELECT board_no, board_category, board_title
+			  ,board_content, board_written_date, board_hit
+			  ,board_like, board_dislike, board_report_count, board_blind
+    	  FROM tb_community
+    	 WHERE member_no = #{member_no}
+      ORDER BY board_no DESC
+	</select>
 	
 </mapper>

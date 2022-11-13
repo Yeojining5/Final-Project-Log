@@ -37,6 +37,27 @@ public class SubsLogic {
 		subsPurchase = subsDao.subsPurchase(pMap);
 		return subsPurchase;
 	}
+
+	public int periodUpdate(Map<String, Object> pMap) {
+		logger.info("periodUpdate 호출 성공");
+		int result = 0;
+		result = subsDao.periodUpdate(pMap);
+		return result;
+	}
+
+	public int pauseUpdate(Map<String, Object> pMap) {
+		logger.info("pauseUpdate 호출 성공");
+		int result = 0;
+		result = subsDao.pauseUpdate(pMap);
+		return result;
+	}
+
+	public Map<String, Object> mySubs(Map<String, Object> pMap) {
+		logger.info("mySubs 호출 성공");
+		Map<String, Object> mySubs = null;
+		mySubs = subsDao.mySubs(pMap);
+		return mySubs;
+	}
 	
 	
 

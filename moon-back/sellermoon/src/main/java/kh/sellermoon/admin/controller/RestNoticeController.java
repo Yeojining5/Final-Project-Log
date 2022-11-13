@@ -56,7 +56,7 @@ public class RestNoticeController {
 		if(!notice_file.isEmpty()) {//
 			String filename = notice_file.getOriginalFilename();
 			logger.info("한글 처리 테스트 : "+filename);
-			String savePath = "C:\\KH-Final-Project\\workspace_sellermoon\\sellermoon\\src\\main\\webapp\\pds";
+			String savePath = "C:\\SellerMoonMerge\\moon-back\\sellermoon\\sellermoon\\src\\main\\webapp\\pds";
 			//파일에 대한 풀 네임 담기
 			String fullPath = savePath+"\\"+filename;			
 			try {

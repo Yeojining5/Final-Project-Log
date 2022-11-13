@@ -60,4 +60,12 @@ public class MemberBoardLogic {
 		result = boardDao.boardDelete(pMap);
 		return result;
 	}
+
+	public List<Map<String, Object>> myBoard(Map<String, Object> pMap) {
+		logger.info("myBoard 호출 성공");
+		List<Map<String, Object>> myBoard = null;
+		myBoard = boardDao.myBoard(pMap);
+		return myBoard;
+	}
+
 }
