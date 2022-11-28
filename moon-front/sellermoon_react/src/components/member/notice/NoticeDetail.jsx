@@ -71,7 +71,7 @@ const NoticeDetail = () => {
                   </tr>
                   <tr>
                     <th>작성자</th>
-                    <td colSpan={4}>{noticeVO.ADMIN_ID}</td>
+                    <td colSpan={4}>{noticeVO.ADMIN_ID === "admin" ? "월간문" : "관리자"}</td>
                   </tr>
                   <tr>
                     <th>첨부파일</th>

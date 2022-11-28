@@ -30,7 +30,7 @@ const FaqRow = (props) => {
             [{result.FAQ_CATEGORY}] &nbsp;
             {result.FAQ_TITLE}
           </td>
-        <td>{result.ADMIN_ID}</td>
+        <td>{result.ADMIN_ID === "admin" ? "월간문" : "관리자"}</td>
         <td>{result.FAQ_WRITE_DATE}</td>
         <td>{result.FAQ_VIEW_COUNT}</td>
       </tr>

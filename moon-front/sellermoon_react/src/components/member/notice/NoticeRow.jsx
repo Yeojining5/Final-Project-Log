@@ -29,7 +29,7 @@ const NoticeRow = (props) => {
             [{result.NOTICE_CATEGORY}] &nbsp;
             {result.NOTICE_TITLE}
           </td>
-        <td>{result.ADMIN_ID}</td>
+        <td>{result.ADMIN_ID === "admin" ? "월간문" : "관리자"}</td>
         <td>{result.NOTICE_REGDATE}</td>
         <td>{result.NOTICE_HIT}</td>
       </tr>

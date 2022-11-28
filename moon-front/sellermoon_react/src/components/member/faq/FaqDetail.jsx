@@ -65,7 +65,7 @@ const FaqDetail = () => {
                   </tr>
                   <tr>
                     <th>작성자</th>
-                    <td colSpan={4}>{faqVO.ADMIN_ID}</td>
+                    <td colSpan={4}>{faqVO.ADMIN_ID === "admin" ? "월간문" : "관리자"}</td>
                   </tr>
                   <tr>
                     <th>작성일</th>
